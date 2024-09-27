@@ -122,6 +122,8 @@ type DownloadOptions = {
   isAllowedOverRoaming?: boolean,
   isAllowedOverMetered?: boolean,
   isNotificationVisible?: boolean;
+  saveInDownloads?:boolean;
+  mimeType?:string;
 }
 
 export function download (options: DownloadOptions) {
@@ -139,6 +141,8 @@ export function download (options: DownloadOptions) {
   if (options.isAllowedOverRoaming == null) options.isAllowedOverRoaming = true
   if (options.isAllowedOverMetered == null) options.isAllowedOverMetered = true
   if (options.isNotificationVisible == null) options.isNotificationVisible = false
+  if (options.saveInDownloads === null) options.saveInDownloads = false
+  if (options.mimeType === null) options.mimeType = "text/plain"
 
   const task = new DownloadTask({
     id: options.id,
